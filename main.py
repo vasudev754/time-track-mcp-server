@@ -37,15 +37,18 @@ def log_time(employee_name: str, project: str, entry_date: str, hours: float, de
     """Log a time entry. entry_date must be YYYY-MM-DD. Shows up on the website immediately."""
     return db.log_time(employee_name, project, entry_date, hours, description)
 
+
 @mcp.tool
 def get_timesheet(employee_name: str, start_date: str = "", end_date: str = "") -> list[dict]:
     """Get one employee's logged entries, optionally filtered to a date range (YYYY-MM-DD)."""
     return db.get_timesheet(employee_name, start_date or None, end_date or None)
 
+
 @mcp.tool
 def get_project_summary(project: str) -> dict:
     """Get total hours logged against a project, broken down by employee."""
     return db.get_project_summary(project)
+
 
 @mcp.tool
 def list_projects() -> list[str]:
